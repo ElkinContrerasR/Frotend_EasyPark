@@ -1,0 +1,82 @@
+.registro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: black;
+    color: white;
+    height: 100vh;
+    justify-content: center;
+    position: relative;
+
+    h1 {
+        font-size: 30px; /* Ajusta el tamaño del texto "Registro"*/
+        position: absolute;
+        top: 10%;  /*Lo sube más arriba*/
+    }
+  
+    .formulario {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 30px;
+      width: 350px;
+      text-align: center;
+      margin-top: 20px; /* Separa el formulario del título*/
+
+        h2 {
+            font-size: 18px; /* Reduce el tamaño del texto "Datos"*/
+        }
+  
+      input {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid black;
+      }
+  
+     
+    }
+
+    .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Espacio para el botón */
+}
+
+.password-container button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+  }
+
+  
+
+  button {
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+  

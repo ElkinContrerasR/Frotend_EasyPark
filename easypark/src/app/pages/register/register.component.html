@@ -1,0 +1,40 @@
+<div class="registro-container">
+    <h1>Registro</h1>
+
+    <div class="formulario mb-2">
+        <h2>Datos</h2>
+
+        <input type="text" placeholder="Nombres" [(ngModel)]="user.nombres" />
+        <input type="text" placeholder="Apellidos" [(ngModel)]="user.apellidos" />
+        <input type="email" placeholder="Email" [(ngModel)]="user.email" />
+        
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p> <!-- Mensaje de error -->
+
+        <input type="text" placeholder="Teléfono" [(ngModel)]="user.telefono" />
+        <input type="text" placeholder="Dirección" [(ngModel)]="user.direccion" />
+
+        <div class="password-container">
+            <input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="user.password">
+            <button type="button" (click)="togglePassword()">
+                {{ showPassword ? '🙈' : '👁️' }}
+            </button>
+        </div>
+    </div>
+
+    <button class="btn btn-light rounded-pill px-4 py-2" (click)="register()">Siguiente</button>
+</div> 
+
+<!-- Modal de Bootstrap -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title w-100" id="modalTitle">¡Registro Exitoso!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p>El usuario ha sido registrado correctamente.</p>
+      </div>
+    </div>
+  </div>
+</div>
