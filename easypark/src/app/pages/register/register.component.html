@@ -1,30 +1,52 @@
 <div class="registro-container">
-    <h1>Registro</h1>
+  <h1>Registro</h1>
 
-    <div class="formulario mb-2">
-        <h2>Datos</h2>
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+      <div class="formulario mb-2">
+          <h2>Datos</h2>
 
-        <input type="text" placeholder="Nombres" [(ngModel)]="user.nombres" />
-        <input type="text" placeholder="Apellidos" [(ngModel)]="user.apellidos" />
-        <input type="email" placeholder="Email" [(ngModel)]="user.email" />
-        
-        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p> <!-- Mensaje de error -->
+          <input type="text" placeholder="Nombres" [(ngModel)]="user.nombres" name="nombres" required #nombres="ngModel"/>
+          <p *ngIf="nombres.invalid && nombres.touched" class="error-message">El nombre es obligatorio.</p>
 
-        <input type="text" placeholder="Teléfono" [(ngModel)]="user.telefono" />
-        <input type="text" placeholder="Dirección" [(ngModel)]="user.direccion" />
+          <input type="text" placeholder="Apellidos" [(ngModel)]="user.apellidos" name="apellidos" required #apellidos="ngModel"/>
+          <p *ngIf="apellidos.invalid && apellidos.touched" class="error-message">El apellido es obligatorio.</p>
 
-        <div class="password-container">
-            <input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="user.password">
-            <button type="button" (click)="togglePassword()">
-                {{ showPassword ? '🙈' : '👁️' }}
-            </button>
-        </div>
-    </div>
+          <input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$" #email="ngModel"/>
+          <p *ngIf="email.invalid && email.touched" class="error-message">
+            {{ email.errors?.required ? 'El email es obligatorio.' : 'Introduce un email válido que termine en .com' }}
+          </p>
 
-    <button class="btn btn-light rounded-pill px-4 py-2" (click)="register()">Siguiente</button>
-</div> 
+          <input type="text" placeholder="Teléfono" [(ngModel)]="user.telefono" name="telefono" required pattern="^[0-9]+$" #telefono="ngModel"/>
+          <p *ngIf="telefono.invalid && telefono.touched" class="error-message">
+            {{ telefono.errors?.required ? 'El teléfono es obligatorio.' : 'El teléfono solo puede contener números.' }}
+          </p>
 
-<!-- Modal de Bootstrap -->
+          <input type="text" placeholder="Dirección" [(ngModel)]="user.direccion" name="direccion" required #direccion="ngModel"/>
+          <p *ngIf="direccion.invalid && direccion.touched" class="error-message">La dirección es obligatoria.</p>
+
+          <div class="password-container">
+              <input [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required minlength="6" #password="ngModel">
+              <button type="button" (click)="togglePassword()">
+                  {{ showPassword ? '🙈' : '👁️' }}
+              </button>
+          </div>
+          <p *ngIf="password.invalid && password.touched" class="error-message">La contraseña debe tener al menos 6 caracteres.</p>
+
+          <div class="password-container">
+              <input [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirmar Contraseña" [(ngModel)]="user.confirmPassword" name="confirmPassword" required minlength="6" #confirmPassword="ngModel">
+              <button type="button" (click)="toggleConfirmPassword()">
+                  {{ showConfirmPassword ? '🙈' : '👁️' }}
+              </button>
+          </div>
+          <p *ngIf="confirmPassword.invalid && confirmPassword.touched" class="error-message">Debes confirmar tu contraseña.</p>
+      </div>
+
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <button type="submit" class="btn btn-light rounded-pill px-4 py-2" [disabled]="registerForm.invalid">Siguiente</button>
+  </form>
+</div>
+
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">

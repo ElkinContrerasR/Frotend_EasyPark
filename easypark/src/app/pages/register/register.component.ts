@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-declare var bootstrap: any; // Declaramos Bootstrap como variable global
+declare var bootstrap: any; 
 
 @Component({
   selector: 'app-register',
@@ -15,6 +15,7 @@ declare var bootstrap: any; // Declaramos Bootstrap como variable global
 })
 export class RegisterComponent {
   showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   user: any = {}; 
   errorMessage: string = '';
 
@@ -26,20 +27,32 @@ export class RegisterComponent {
       this.showPassword = !this.showPassword;
   }
 
-  register(): void {
+  toggleConfirmPassword(): void {
+      this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
+  register(form: NgForm): void {
+    if (form.invalid) {
+      this.errorMessage = 'Por favor, completa correctamente el formulario.';
+      return;
+    }
+
+    if (this.user.password !== this.user.confirmPassword) {
+      this.errorMessage = 'Las contraseñas no coinciden.';
+      return;
+    }
+
     console.log('Registrando usuario...', this.user);
     this.userService.registerUser(this.user).subscribe(
         response => {
             console.log('Registro exitoso', response);
             this.errorMessage = '';
 
-            // Obtener el modal y mostrarlo
             const modalElement = document.getElementById('successModal');
             if (modalElement) {
                 const modal = new bootstrap.Modal(modalElement);
                 modal.show();
 
-                // Cerrar el modal y redirigir después de 2 segundos
                 setTimeout(() => {
                     modal.hide();
                     this.router.navigate(['/']);
