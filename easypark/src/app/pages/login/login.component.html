@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center align-items-center vh-100 text-white text-center"
+     style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);">
+
+    <!-- Tarjeta de Inicio de Sesión -->
+    <div class="glass-card p-4 rounded-4 shadow-lg">
+        <img src="/logo.png" alt="Logo EasyPark" class="mb-3" width="80">
+        <h2 class="fw-bold text-warning mb-3">Iniciar Sesión</h2>
+
+        <!-- Campos de Entrada -->
+        <form (ngSubmit)="login()">
+            <div class="mb-3">
+                <input type="email" class="form-control input-glass" placeholder="Correo Electrónico"
+                       [(ngModel)]="user.email" name="email" (input)="invalidLoginEmail = false" required>
+                <p *ngIf="invalidLoginEmail" class="text-danger small mt-1">
+                    Formato de correo inválido (ejemplo&#64;gmail.com)
+                </p>
+            </div>
+            <div class="mb-3 password-container">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control input-glass" 
+                       placeholder="Contraseña" [(ngModel)]="user.password" name="password" required>
+                <button type="button" class="btn-eye" (click)="togglePassword()">
+                    {{ showPassword ? '🙈' : '👁️' }}
+                </button>
+            </div>
+
+            <button class="btn btn-light rounded-pill px-4 py-2 mt-2 shadow-lg fw-bold btn-glass" type="submit" [disabled]="isLoading">
+                <span *ngIf="!isLoading">Ingresar</span>
+                <span *ngIf="isLoading">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    Procesando...
+                </span>
+            </button>
+
+            <p *ngIf="loginErrorMessage" class="text-danger mt-2">{{ loginErrorMessage }}</p>
+        </form>
+
+        <!-- Enlace para Recuperar Contraseña -->
+        <p class="mt-3">
+            <a class="text-warning text-decoration-none" role="button" (click)="openForgotPasswordModal()">
+                ¿Olvidaste tu contraseña?
+            </a>
+        </p>
+    </div>
+</div>
+
+<!-- Modal de Recuperación de Contraseña -->
+<div *ngIf="showForgotPasswordModal" class="modal-backdrop" (click)="closeForgotPasswordModal()">
+    <div class="modal-content" role="dialog" aria-labelledby="modal-title" 
+         (click)="$event.stopPropagation()" (keydown.escape)="closeForgotPasswordModal()" tabindex="0">
+        <h4 id="modal-title" class="text-warning mb-3">Recuperar Contraseña</h4>
+        
+        <div class="mb-3">
+            <label for="recovery-email" class="form-label">Correo Electrónico</label>
+            <input id="recovery-email" type="email" class="form-control input-glass" 
+                   [(ngModel)]="recoveryData.email" name="recoveryEmail" 
+                   (input)="invalidRecoveryEmail = false" required>
+            <p *ngIf="invalidRecoveryEmail" class="text-danger small mt-1">
+                Formato de correo inválido (ejemplo&#64;gmail.com)
+            </p>
+        </div>
+        
+        <div class="mb-3">
+            <label for="recovery-document" class="form-label">Número de Documento</label>
+            <input id="recovery-document" type="text" class="form-control input-glass" 
+                   [(ngModel)]="recoveryData.document" name="document" 
+                   (input)="invalidDocument = false" required>
+            <p *ngIf="invalidDocument" class="text-danger small mt-1">
+                Solo se permiten números
+            </p>
+        </div>
+        
+        <p *ngIf="recoveryErrorMessage" class="text-danger">{{ recoveryErrorMessage }}</p>
+        
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-outline-secondary rounded-pill px-4" (click)="closeForgotPasswordModal()">
+                Cancelar
+            </button>
+            <button class="btn btn-warning rounded-pill px-4" (click)="sendRecoveryRequest()" [disabled]="isRecoveryLoading">
+                <span *ngIf="!isRecoveryLoading">Recuperar</span>
+                <span *ngIf="isRecoveryLoading">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    Enviando...
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Éxito en Login -->
+<div class="modal fade" id="loginSuccessModal" tabindex="-1" aria-labelledby="loginSuccessTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title w-100 text-warning" id="loginSuccessTitle">¡Inicio de Sesión Exitoso!</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Has iniciado sesión correctamente.</p>
+                <p class="small">Serás redirigido automáticamente...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Éxito en Recuperación -->
+<div class="modal fade" id="recoverySuccessModal" tabindex="-1" aria-labelledby="recoverySuccessTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title w-100 text-warning" id="recoverySuccessTitle">¡Correo Enviado!</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se han enviado instrucciones para recuperar tu contraseña al correo electrónico proporcionado.</p>
+                <p class="small">Por favor revisa tu bandeja de entrada.</p>
+            </div>
+        </div>
+    </div>
+</div>

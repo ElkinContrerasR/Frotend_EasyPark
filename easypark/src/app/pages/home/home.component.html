@@ -1,13 +1,21 @@
-<div class="d-flex flex-column justify-content-center align-items-center vh-100 bg-black text-white text-center">
-    <div>
-      <img src="/logo.png" alt="Garage Icon" class="mb-3" width="80">
-      <h1 class="fw-bold text-warning">EasyPark</h1>
-      <p class="text-secondary">Rápido, seguro y sin complicaciones</p>
-    </div>
+<div class="d-flex justify-content-center align-items-center vh-100 text-white text-center" 
+     style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);">
     
-    <div class="mt-4 d-flex flex-column">
-      <button class="btn btn-light rounded-pill px-4 py-2 mb-2">Iniciar Sesión</button>
-      <button class="btn btn-light rounded-pill px-4 py-2"[routerLink] = "'/register'">Registro</button>
+    <!-- Tarjeta con efecto Glass -->
+    <div class="glass-card p-4 rounded-4 shadow-lg">
+        <img src="/logo.png" alt="Garage Icon" class="mb-3" width="80">
+        <h1 class="fw-bold text-warning display-4">EasyPark</h1>
+        <p class="text-secondary fs-5">Rápido, seguro y sin complicaciones</p>
+        
+        <div class="mt-4 d-flex flex-column">
+            <button class="btn btn-light rounded-pill px-4 py-2 mb-3 shadow-lg fw-bold btn-glass"
+               [routerLink]="'/login'">
+                Iniciar Sesión
+            </button>
+            <button class="btn btn-outline-warning rounded-pill px-4 py-2 shadow fw-bold btn-glass"
+                    [routerLink]="'/register'">
+                Registro
+            </button>
+        </div>
     </div>
-  </div>
-  
+</div>

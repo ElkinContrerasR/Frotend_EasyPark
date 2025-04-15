@@ -1,0 +1,130 @@
+/* Estilos generales para la tarjeta */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Alertas estilo glass */
+.alert-glass {
+    background: rgba(0, 123, 255, 0.2);
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    color: white;
+}
+
+.alert-glass-warning {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: white;
+}
+
+/* Tabla estilo glass */
+.table-glass {
+    background-color: transparent;
+    color: white;
+}
+
+.glass-header {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-row {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glass-row:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+/* Formulario estilo glass */
+.glass-card-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card-header {
+    background: rgba(255, 193, 7, 0.2);
+    padding: 1rem;
+    font-weight: bold;
+    color: #ffc107;
+    border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.glass-card-body {
+    padding: 1.5rem;
+}
+
+/* Inputs estilo glass */
+.input-glass {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color:black !important;
+}
+
+.input-glass:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25) !important;
+}
+
+.input-glass::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Botones */
+.btn-glass {
+    transition: all 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.btn-glass:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 1rem;
+    }
+    
+    .glass-card-body {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .glass-modal {
+    background: linear-gradient(to bottom, #24243e, #302b63);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: white;
+}
+
+.glass-modal .modal-header {
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.glass-modal .modal-footer {
+    border-top: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+}

@@ -1,82 +1,84 @@
-.registro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: black;
-    color: white;
-    height: 100vh;
-    justify-content: center;
-    position: relative;
+/* Estilos generales heredados del tema */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+}
 
-    h1 {
-        font-size: 30px; /* Ajusta el tamaño del texto "Registro"*/
-        position: absolute;
-        top: 10%;  /*Lo sube más arriba*/
-    }
-  
-    .formulario {
-      background: white;
-      color: black;
-      padding: 20px;
-      border-radius: 30px;
-      width: 350px;
-      text-align: center;
-      margin-top: 20px; /* Separa el formulario del título*/
+.input-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white !important;
+  transition: all 0.3s ease;
+}
 
-        h2 {
-            font-size: 18px; /* Reduce el tamaño del texto "Datos"*/
-        }
-  
-      input {
-        width: 100%;
-        margin: 5px 0;
-        padding: 8px;
-        border: none;
-        border-bottom: 1px solid black;
-      }
-  
-     
-    }
+.input-glass::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
 
-    .password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+.input-glass:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+  color: white;
+}
+
+.btn-glass {
+  transition: all 0.3s ease-in-out;
+  font-size: 1.1rem;
+}
+
+.btn-glass:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-glass:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estilos específicos para el registro */
+.password-container {
+  position: relative;
 }
 
 .password-container input {
-    width: 100%;
-    padding-right: 40px; /* Espacio para el botón */
+  padding-right: 40px;
 }
 
-.password-container button {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+.btn-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffc107;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 2;
 }
 
+/* Modal personalizado */
+.glass-modal {
+  background: linear-gradient(to bottom, #24243e, #302b63);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  color: white;
+}
 
+.glass-modal .modal-header {
+  border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+}
 
+/* Responsividad */
+@media (max-width: 576px) {
+  .glass-card {
+      padding: 1.5rem;
+      margin: 0 1rem;
   }
-
-  
-
-  button {
-    background: white;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 50px;
-  }
-
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
 }
-
-  

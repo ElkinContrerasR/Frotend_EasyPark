@@ -1,0 +1,144 @@
+/* Estilos para la tarjeta de login */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.input-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.input-glass::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-glass:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+.btn-glass {
+    transition: all 0.3s ease-in-out;
+    font-size: 1.1rem;
+}
+
+.btn-glass:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para el campo de contraseña */
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.btn-eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffc107;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+/* Estilos para el modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modal-content {
+    background: linear-gradient(to bottom, #24243e, #302b63);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    color: white;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.glass-modal {
+    background: linear-gradient(to bottom, #24243e, #302b63);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: white;
+}
+
+.glass-modal .modal-header {
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.modal-content input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+.modal-content label {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.modal-content .btn {
+    min-width: 120px;
+}
+
+.text-danger.small {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Responsividad */
+@media (max-width: 576px) {
+    .glass-card {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+}
